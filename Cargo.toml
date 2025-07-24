@@ -1,0 +1,27 @@
+[package]
+name = "cutlery"
+version = "0.1.0"
+edition = "2024"
+description = "Cross-platform fork"
+license = "Apache-2.0"
+readme = "README.md"
+homepage = "https://github.com/jprendes/cutlery"
+repository = "https://github.com/jprendes/cutlery"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2.174"
+
+[target.'cfg(windows)'.dependencies]
+phnt = "0.1.2"
+windows = { version = "0.61", features = [
+    "Win32_Foundation",
+    "Win32_System_Console",
+    "Win32_System_Threading",
+] }
+
+[dev-dependencies]
+stdio-utils = "0.1.2"
+
+[features]
+default = ["pidfd"]
+pidfd = []
